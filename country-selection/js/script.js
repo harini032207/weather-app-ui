@@ -88,7 +88,7 @@ function createRipple(card, event) {
     setTimeout(() => {
         ripple.remove();
     }, 600);
-}
+    }
 
 // Start
 document.addEventListener('DOMContentLoaded', init);

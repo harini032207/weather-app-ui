@@ -53,27 +53,26 @@ function init() {
  * Handle Selection Interaction
  */
 function handleStateSelection(card, stateName, event) {
-    // Premium Ripple Effect
     createRipple(card, event);
 
-    // Visual Selection
+    // CRITICAL: We must save these two keys exactly like this
+    localStorage.setItem("selectedState", stateName.trim());
+    
+    // Ensure we also have the country (if not already set)
+    const currentCountry = document.getElementById('selectedCountryDisplay').textContent.replace('Region: ', '').trim();
+    localStorage.setItem("selectedCountry", currentCountry);
+
     document.querySelectorAll('.state-card').forEach(c => c.classList.remove('selected'));
     card.classList.add('selected');
 
-    // Store state for next page
-    localStorage.setItem("selectedState", stateName);
-
-    // Show Loading Overlay
     setTimeout(() => {
         overlay.classList.remove('hidden');
     }, 400);
 
-    // Navigate to City Selection
     setTimeout(() => {
         window.location.href = "../city-selection/index.html";
-    }, 2400);
+    }, 2000);
 }
-
 /**
  * Ripple Effect Helper
  */
