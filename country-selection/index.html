@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere | Choose Your Country</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Premium Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated Background Layers -->
+    <div class="bg-wrapper">
+        <div class="gradient-bg"></div>
+        <div class="particles" id="particles"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="content-container">
+        <!-- Header -->
+        <header>
+            <button class="back-btn glass">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back
+            </button>
+            <h1 class="page-title">Choose Your Country</h1>
+            <div class="spacer"></div> <!-- For balancing Flexbox -->
+        </header>
+
+        <!-- Main Grid -->
+        <main>
+            <div class="country-grid" id="countryGrid">
+                <!-- Cards will be injected by JavaScript -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Selection Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p class="loading-text">Loading States...</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

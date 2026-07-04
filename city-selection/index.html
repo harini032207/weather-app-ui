@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere | Choose Your City</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Premium Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Animated Background (Consistent with System) -->
+    <div class="bg-wrapper">
+        <div class="gradient-bg"></div>
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+    </div>
+
+    <div class="content-container">
+        <!-- Header -->
+        <header>
+            <button class="back-btn glass" id="backBtn">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                Back
+            </button>
+            <div class="header-text">
+                <h1 class="page-title">Choose Your City</h1>
+                <p class="subtitle" id="locationContext">Loading context...</p>
+            </div>
+            <div class="spacer"></div>
+        </header>
+
+        <!-- Main City Grid -->
+        <main>
+            <div class="city-grid" id="cityGrid">
+                <!-- Cities will be injected dynamically -->
+            </div>
+        </main>
+    </div>
+
+    <!-- Final Selection Overlay -->
+    <div id="loadingOverlay" class="loading-overlay hidden">
+        <div class="loader-content">
+            <div class="pulse-ring"></div>
+            <p class="loading-text">Analyzing Weather...</p>
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>

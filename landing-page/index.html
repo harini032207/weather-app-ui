@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WeatherSphere | Premium Weather Experience</title>
+    <link rel="stylesheet" href="css/style.css">
+    <!-- Premium Typography -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Space Background -->
+    <div class="stars-container"></div>
+    <div class="gradient-overlay"></div>
+
+    <!-- UI Layer -->
+    <div class="app-interface">
+        <header>
+            <div class="empty-side"></div>
+            <h1 class="logo">WELCOME TO WEATHER SPHERE</h1>
+            <div class="header-action">
+                <button class="glass-btn">📍 My Home City</button>
+            </div>
+        </header>
+
+        <main id="main-scene">
+            <!-- Canvas for Three.js Globe -->
+            <div id="globe-container"></div>
+
+            <!-- Weather Icons -->
+            <div class="floating-icons">
+                <div class="w-icon tl"><span>☀️</span><p>Sunny</p></div>
+                <div class="w-icon tr"><span>🌧️</span><p>Rain</p></div>
+                <div class="w-icon bl"><span>❄️</span><p>Snow</p></div>
+                <div class="w-icon br"><span>⛈️</span><p>Storm</p></div>
+            </div>
+
+            <div class="footer-text">
+                <p id="instruction-text">Click the Earth to explore weather around the world</p>
+            </div>
+        </main>
+    </div>
+
+    <!-- Loading Screen Overlay -->
+    <div id="loading-overlay" class="hidden">
+        <div class="loading-content">
+            <div class="spinner"></div>
+            <h2 class="loading-title">Entering WeatherSphere...</h2>
+        </div>
+    </div>
+
+    <!-- Three.js Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
