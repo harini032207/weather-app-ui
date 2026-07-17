@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WeatherSphere | Secure Login</title>
+    <title>WeatherSphere | Create Account</title>
     <!-- Premium Typography -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <!-- Icons -->
@@ -12,12 +12,11 @@
 </head>
 <body>
 
-    <!-- Animated Background Layers -->
+    <!-- Animated Background Layers (Mirrored from Login) -->
     <div class="bg-wrapper">
         <div class="glow-orb orb-1"></div>
         <div class="glow-orb orb-2"></div>
         <div class="glow-orb orb-3"></div>
-        <div class="particles" id="particles-js"></div>
     </div>
 
     <div class="login-container">
@@ -28,11 +27,21 @@
                     <span class="logo-icon">🌐</span>
                     <h1 class="logo-text">WEATHER<span>SPHERE</span></h1>
                 </div>
-                <h2>Welcome Back</h2>
-                <p class="subtitle">Sign in to continue your journey</p>
+                <h2>Create your Account</h2>
+                <p class="subtitle">Join WeatherSphere and explore live weather around the world.</p>
             </header>
 
-            <form id="loginForm" class="login-form">
+            <form id="registerForm" class="login-form" novalidate>
+                <!-- Full Name Field -->
+                <div class="input-group">
+                    <label for="fullName">Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fa-regular fa-user field-icon"></i>
+                        <input type="text" id="username" placeholder="John Doe" required>
+                    </div>
+                    <span class="validation-msg" id="nameError">Name is required</span>
+                </div>
+
                 <!-- Email Field -->
                 <div class="input-group">
                     <label for="email">Email Address</label>
@@ -40,45 +49,56 @@
                         <i class="fa-regular fa-envelope field-icon"></i>
                         <input type="email" id="email" placeholder="name@company.com" required>
                     </div>
+                    <span class="validation-msg" id="emailError">Please enter a valid email</span>
                 </div>
 
                 <!-- Password Field -->
                 <div class="input-group">
-                    <div class="label-row">
-                        <label for="password">Password</label>
-                        <a href="#" class="forgot-link">Forgot Password?</a>
-                    </div>
+                    <label for="password">Password</label>
                     <div class="input-wrapper">
                         <i class="fa-solid fa-lock field-icon"></i>
-                        <input type="password" id="password" placeholder="••••••••" required>
-                        <button type="button" class="toggle-password" id="togglePassword">
-                            <i class="fa-regular fa-eye" id="eyeIcon"></i>
+                        <input type="password" id="password" placeholder="Min. 8 characters" required>
+                        <button type="button" class="toggle-password" data-target="password">
+                            <i class="fa-regular fa-eye toggle-icon"></i>
                         </button>
                     </div>
+                    <span class="validation-msg" id="passwordError">Password must be at least 8 characters</span>
                 </div>
 
-                <!-- Remember Me -->
+                <!-- Confirm Password Field -->
+                <div class="input-group">
+                    <label for="confirmPassword">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <i class="fa-solid fa-shield-check field-icon"></i>
+                        <input type="password" id="confirmPassword" placeholder="••••••••" required>
+                        <button type="button" class="toggle-password" data-target="confirmPassword">
+                            <i class="fa-regular fa-eye toggle-icon"></i>
+                        </button>
+                    </div>
+                    <span class="validation-msg" id="confirmError">Passwords do not match</span>
+                </div>
+
+                <!-- Terms & Privacy -->
                 <div class="form-options">
                     <label class="checkbox-container">
-                        <input type="checkbox" id="rememberMe">
+                        <input type="checkbox" id="terms">
                         <span class="checkmark"></span>
-                        Remember for 30 days
+                        I agree to the <a href="#" class="inline-link">Terms & Privacy Policy</a>
                     </label>
                 </div>
 
                 <!-- Actions -->
                 <div class="button-stack">
-                    <button type="submit" class="btn btn-primary">
-                        <span>Sign In</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                    <button onclick="registerUser()" type="button" id="submitBtn" class="btn btn-primary" >
+                        <span>Create Account</span>
+                        <i class="fa-solid fa-user-plus"></i>
                     </button>
                     
                     <div class="divider">
                         <span>OR</span>
                     </div>
 
-                    <button type="button" class="btn btn-google" onclick="loginWithGoogle()">
-                        <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/pjax-loader.gif" alt="" class="loader hidden">
+                    <button type="button" class="btn btn-google" onclick="registerWithGoogle()">
                         <svg class="google-icon" viewBox="0 0 24 24">
                             <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
                             <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
@@ -91,7 +111,7 @@
             </form>
 
             <footer class="card-footer">
-                <p>Don't have an account? <a href="../register-page/index.html">Create account</a></p>
+                <p>Already have an account? <a href="../login-page/index.html">Sign In</a></p>
             </footer>
         </main>
     </div>

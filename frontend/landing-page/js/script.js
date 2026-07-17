@@ -141,6 +141,10 @@ function animate() {
 
     renderer.render(scene, camera);
 }
+document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("access_token");
+    window.location.href = "../login-page/index.html";
+});
 
 // Start Application
 init();

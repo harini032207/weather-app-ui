@@ -46,34 +46,55 @@ document.addEventListener('DOMContentLoaded', () => {
  * Placeholder for standard login
  * Backend integration will be implemented later with FastAPI
  */
-function loginUser() {
-    const loginBtn = document.querySelector('.btn-primary');
-    
-    // UI Feedback
+async function loginUser() {
+    const loginBtn = document.querySelector(".btn-primary");
+
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
     loginBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Authenticating...`;
-    loginBtn.style.opacity = '0.7';
-    loginBtn.style.pointerEvents = 'none';
+    loginBtn.disabled = true;
 
-    setTimeout(() => {
-        console.log("Standard login placeholder triggered.");
-        window.location.href = "../landing-Page/index.html";
-    }, 1500);
+    try {
+        const formData = new URLSearchParams();
+        formData.append("username", email);
+        formData.append("password", password);
+
+        const response = await fetch("http://127.0.0.1:8000/auth/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded",
+            },
+            body: formData,
+        });
+
+        const data = await response.json();
+
+        if (response.ok) {
+            localStorage.setItem("access_token", data.access_token);
+
+            alert("Login Successful!");
+
+            window.location.href = "../landing-Page/index.html";
+        } else {
+            alert(data.detail || "Login Failed");
+        }
+    } catch (error) {
+        console.error(error);
+        alert("Cannot connect to backend.");
+    }
+
+    loginBtn.innerHTML = `
+        <span>Sign In</span>
+        <i class="fa-solid fa-arrow-right"></i>
+    `;
+    loginBtn.disabled = false;
 }
-
 /**
  * Placeholder for Google OAuth
  * Google Auth will be implemented later using FastAPI
  */
 function loginWithGoogle() {
-    const googleBtn = document.querySelector('.btn-google');
-    
-    // UI Feedback
-    googleBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin"></i> Connecting Google...`;
-    googleBtn.style.opacity = '0.7';
-    googleBtn.style.pointerEvents = 'none';
-
-    setTimeout(() => {
-        console.log("Google login placeholder triggered.");
-        window.location.href = "../landing-Page/index.html";
-    }, 1500);
+    window.location.href =
+        "http://127.0.0.1:8000/auth/google/login";
 }
