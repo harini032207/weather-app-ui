@@ -142,7 +142,7 @@ async function registerUser() {
         <i class="fa-solid fa-user-plus"></i>
     `;
 }
+   
 function registerWithGoogle() {
-    console.log("Redirecting to Google OAuth...");
-     window.location.href = "http://127.0.0.1:8000/auth/google/register";
+    window.location.href = "http://127.0.0.1:8000/auth/google/login";
 }
